@@ -1,0 +1,74 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+CW_trainer-GNR
+
+# Build directories
+build/
+bin/
+debug/
+release/
+x64/
+x86/
+obj/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+*.cmake
+!CMakeLists.txt
+
+# Qt
+*.pro.user
+*.qmake.stash
+.qmake.cache
+ui_*.h
+moc_*.cpp
+qrc_*.cpp
+Makefile*
+
+# IDEs
+.vscode/
+.idea/
+*.user
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Sturucture and explanation of the project
+structure.md
