@@ -1,0 +1,81 @@
+# =================================================================
+# 1. Global Ignores (Block Everything First)
+# =================================================================
+# Block all build artifacts, temporary files, and IDE noise
+*.d
+*.o
+*.obj
+*.slo
+*.lo
+*.gch
+*.pch
+*.so
+*.dylib
+*.dll
+*.mod
+*.smod
+*.lai
+*.la
+*.a
+*.lib
+*.exe
+*.out
+*.app
+
+# Block build directories and IDEs
+build/
+build-windows/
+Build_Assets/
+bin/
+debug/
+release/
+x64/
+x86/
+obj/
+.vscode/
+.idea/
+*.user
+*.swp
+*~
+
+# Block Build System files
+CMakeCache.txt
+CMakeFiles/
+Makefile*
+cmake_install.cmake
+install_manifest.txt
+*.cmake
+*.pro.user
+*.qmake.stash
+.qmake.cache
+ui_*.h
+moc_*.cpp
+qrc_*.cpp
+installer.nsi
+
+# Block OS/FUSE junk
+.DS_Store
+Thumbs.db
+**/.fuse_hidden*
+
+# =================================================================
+# 2. Whitelist (The "Un-Ignore" Section)
+# =================================================================
+# Allow these documentation files
+!README.md
+!structure.md
+!build_windows.sh
+!.gitignore
+
+# Allow the entire Source_code directory
+!Source_code/
+!Source_code/**
+
+# Allow the Download directory and ensure binaries inside are visible
+!Download/
+!Download/**
+!Download/Windows/*.exe
+!Download/Windows/*.zip
+
+# If you have a specific CMakeLists.txt, allow it
+!CMakeLists.txt
