@@ -1,55 +1,22 @@
-# =================================================================
-# 1. Global Ignores (Build Artifacts & IDEs)
-# =================================================================
-# Compiled Objects & Libraries
-*.o
-*.obj
-*.a
-*.la
-*.so
-*.dylib
-*.lo
-*.slo
+# 1. Ignore EVERYTHING by default
+/*
 
-# Qt/Build generated files
-Makefile*
-*.qmake.stash
-*.pro.user
-moc_*.cpp
-ui_*.h
-qrc_*.cpp
-.qmake.cache
-
-# IDE & OS files
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-*.swp
-*~
-
-# =================================================================
-# 2. Folder-Specific Ignores
-# =================================================================
-# Ignore the entire messy build and assets directories
-build-windows/
-Build_Assets/
-debug/
-release/
-
-# =================================================================
-# 3. Whitelist (What TO show on GitHub)
-# =================================================================
-# Explicitly keep these top-level files
+# 2. Allow specific top-level files
+!.gitignore
 !README.md
 !structure.md
-!.gitignore
+!build_windows.sh
 
-# Explicitly keep the entire Source_code directory
+# 3. Allow your essential directories
+!Source_code/
+!Download/
+
+# 4. Deep allow for contents inside those directories
 !Source_code/**
-
-# Explicitly keep the Download directory and its versioned files
 !Download/**
-# Ensure we don't accidentally hide versioned binaries in Download/Windows
-!Download/Windows/*.exe
-!Download/Windows/*.zip
+
+# 5. Specifically re-ignore any hidden system/temp files that might slip in
+**/.fuse_hidden*
+**/.DS_Store
+**/Thumbs.db
+**/*.swp
