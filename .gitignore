@@ -52,6 +52,7 @@ ui_*.h
 moc_*.cpp
 qrc_*.cpp
 installer.nsi
+build_windows.sh
 
 # Block OS/FUSE junk
 .DS_Store
@@ -79,3 +80,5 @@ Thumbs.db
 
 # If you have a specific CMakeLists.txt, allow it
 !CMakeLists.txt
+
+structure.md
