@@ -1,22 +1,82 @@
-# 1. Ignore EVERYTHING by default
-/*
+# Prerequisites
+*.d
 
-# 2. Allow specific top-level files
-!.gitignore
-!README.md
-!structure.md
-!build_windows.sh
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
 
-# 3. Allow your essential directories
-!Source_code/
-!Download/
+# Precompiled Headers
+*.gch
+*.pch
 
-# 4. Deep allow for contents inside those directories
-!Source_code/**
-!Download/**
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
 
-# 5. Specifically re-ignore any hidden system/temp files that might slip in
-**/.fuse_hidden*
-**/.DS_Store
-**/Thumbs.db
-**/*.swp
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+CW_trainer-GNR
+
+# Build directories
+build/
+bin/
+debug/
+release/
+x64/
+x86/
+obj/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+*.cmake
+!CMakeLists.txt
+
+# Qt
+*.pro.user
+*.qmake.stash
+.qmake.cache
+ui_*.h
+moc_*.cpp
+qrc_*.cpp
+Makefile*
+
+# IDEs
+.vscode/
+.idea/
+*.user
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Sturucture and explanation of the project
+structure.md
+
+# Ignore build artifacts
+build-windows/
+# Download/Windows/
+*.o
+*.dll
+Makefile*
+installer.nsi
