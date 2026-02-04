@@ -25,6 +25,7 @@
 # Block build directories and IDEs
 build/
 build-windows/
+build-linux/
 Build_Assets/
 bin/
 debug/
@@ -53,6 +54,7 @@ moc_*.cpp
 qrc_*.cpp
 installer.nsi
 build_windows.sh
+build_linux.sh
 
 # Block OS/FUSE junk
 .DS_Store
