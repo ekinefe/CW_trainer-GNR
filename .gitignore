@@ -1,74 +1,55 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
+# =================================================================
+# 1. Global Ignores (Build Artifacts & IDEs)
+# =================================================================
+# Compiled Objects & Libraries
 *.o
 *.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
+*.a
+*.la
 *.so
 *.dylib
-*.dll
+*.lo
+*.slo
 
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-CW_trainer-GNR
-
-# Build directories
-build/
-bin/
-debug/
-release/
-x64/
-x86/
-obj/
-
-# CMake
-CMakeCache.txt
-CMakeFiles/
-Makefile
-cmake_install.cmake
-install_manifest.txt
-*.cmake
-!CMakeLists.txt
-
-# Qt
-*.pro.user
-*.qmake.stash
-.qmake.cache
-ui_*.h
-moc_*.cpp
-qrc_*.cpp
+# Qt/Build generated files
 Makefile*
+*.qmake.stash
+*.pro.user
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+.qmake.cache
 
-# IDEs
+# IDE & OS files
 .vscode/
 .idea/
-*.user
+.DS_Store
+Thumbs.db
 *.swp
 *~
 
-# OS
-.DS_Store
-Thumbs.db
+# =================================================================
+# 2. Folder-Specific Ignores
+# =================================================================
+# Ignore the entire messy build and assets directories
+build-windows/
+Build_Assets/
+debug/
+release/
 
-# Sturucture and explanation of the project
-structure.md
+# =================================================================
+# 3. Whitelist (What TO show on GitHub)
+# =================================================================
+# Explicitly keep these top-level files
+!README.md
+!structure.md
+!.gitignore
+
+# Explicitly keep the entire Source_code directory
+!Source_code/**
+
+# Explicitly keep the Download directory and its versioned files
+!Download/**
+# Ensure we don't accidentally hide versioned binaries in Download/Windows
+!Download/Windows/*.exe
+!Download/Windows/*.zip
