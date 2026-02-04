@@ -1,91 +1,100 @@
 # CW_trainer-GNR
 
-**CW_trainer-GNR** is a cross-platform desktop application built with **C++ and the Qt Framework**. It serves as a comprehensive Morse Code (CW) training station, featuring algorithmic learning modes, statistical analysis, and hardware integration via Serial/USB for external keyers.
-
-## 🚀 Features
-
-### 1. Training Modes
-The application implements a central logic engine (`MainWindow.cpp`) that supports four distinct practice modes:
-* **Random Characters:** Generates random alphanumeric strings (A-Z, 0-9) for standard decoding practice.
-* **Koch Method:** Implements the Koch method for progressive learning, starting with a specific subset of characters (default Level 2: `K`, `M`).
-* **Echo Practice:** A "Call & Response" mode where the user listens to a character and must mimic it.
-* **TX (Transmit) Mode:** Disables internal generation and waits for input from an external physical keyer to verify sending accuracy.
-
-### 2. Audio & Signal Processing
-* **Synthesis:** Uses `SoundGenerator` to synthesize sine wave tones in real-time based on the Paris standard timing.
-* **Adjustable Parameters:**
-    * **WPM (Speed):** 5 to 50 Words Per Minute.
-    * **Frequency (Pitch):** 300Hz to 1200Hz.
-
-### 3. Analytics & Feedback
-* **Real-time Feedback:** Immediate visual cues (Green/Red) upon typing a character.
-* **Long-term Tracking (`StatisticsTracker`):**
-    * Saves session data (Date, Time, Duration, Accuracy, WPM) to a persistent `statistics.csv` file.
-    * Tracks accuracy for every individual character including alphanumeric and punctuation.
-* **Visualizations (`StatisticsWindow`):**
-    * **Trend Chart:** Plots accuracy over time across different sessions.
-    * **Problem Areas:** A dynamic bar chart identifying the top 5 characters with the highest error rates.
-
-### 4. Hardware Integration
-* **Serial Manager:** Detects and connects to external hardware (e.g., Arduino/ESP32) via USB Serial.
-* **Hot-Plugging:** Supports refreshing available ports dynamically.
+[cite_start]**CW_trainer-GNR** is a high-performance, cross-platform Morse Code (CW) training station developed with **C++ and the Qt 6 Framework**[cite: 1]. [cite_start]Designed for both software-only practice and hardware-integrated training, it provides a data-driven path to mastering Morse Code from beginner to advanced levels[cite: 1].
 
 ---
 
-## 🛠 Technical Requirements
-
-### Dependencies
-This project requires **Qt 6** (or Qt 5.15+) with the following modules enabled in the `.pro` file:
-`QT += core gui widgets serialport multimedia`
-
-### Build System
-The project is structured for **qmake**, indicated by the presence of `.qmake.stash` and `.pro` user configurations.
-
----
-
-## 🔌 Hardware Interface Protocol
-
-To use the **TX Mode**, connect an external device (Arduino/STM32/ESP32) that decodes paddle input and sends it to the PC.
-
-**Serial Settings:**
-* **Baud Rate:** 115200
-* **Data Bits:** 8
-* **Parity:** None
-* **Stop Bits:** 1
-
-**Communication Protocol:**
-The application parses incoming serial data in `MainWindow::onSerialDataReceived`. Your device should send data in one of two formats:
-1.  **Raw Characters:** Simply print the decoded character (e.g., `A`).
-2.  **Encoded Prefix:** Print the string `Encoded: ` followed by the content (e.g., `Encoded: SOS`).
+## 📖 Table of Contents
+* [🎯 Goal of the Project](#-goal-of-the-project)
+* [🚀 Key Features](#-key-features)
+* [🕹 User Manual](#-user-manual)
+* [📈 Checking Analytics](#-checking-analytics)
+* [🔌 Hardware Integrity & Integration](#-hardware-integrity--integration)
+* [📥 How to Download](#-how-to-download)
+* [💻 Detailed Platform Setup](#-detailed-platform-setup)
 
 ---
 
-## 📂 Project Structure
-
-| File | Description |
-| :--- | :--- |
-| **src/MainWindow** | The central controller. Manages UI, logic components, and the main game loop. |
-| **src/SerialManager** | Wrapper around `QSerialPort` for handling device connection and data buffering. |
-| **src/SoundGenerator** | Manages audio output to generate Morse beep timings (dots, dashes, and silence). |
-| **src/StatisticsTracker** | The "Database" logic. Accumulates session data and manages `statistics.csv`. |
-| **src/StatisticsWindow** | Custom UI widget that draws graphs using `QPainter` to visualize session data. |
-| **src/MorseUtils** | Static helper class for mapping characters to Morse strings (e.g., 'A' -> ".-"). |
-| **src/CheatSheetWindow** | A dialog that renders the full Morse alphabet map for reference. |
+## 🎯 Goal of the Project
+[cite_start]The primary objective of CW_trainer-GNR is to provide a comprehensive, algorithmic environment for learning Morse Code[cite: 1]. [cite_start]By utilizing the **Koch Method** and real-time **Echo Practice**, the application focuses on character recognition at high speeds, preventing the "plateau" effect common in traditional learning[cite: 1]. [cite_start]It aims to offer a "professional station" feel on a standard desktop computer[cite: 1].
 
 ---
 
-## 💿 Build & Run Instructions
+## 🚀 Key Features
 
-1.  **Clone the Repository**
-2.  **Open in Qt Creator:** Select the `.pro` file.
-3.  **Configure Kit:** Ensure a Desktop Kit (GCC, MSVC, or Clang) is selected.
-4.  **Build:** Run `qmake` followed by `make` (or use the Build button in Qt Creator).
-5.  **Run:** The executable `CW_trainer-GNR` will be generated in the build directory.
+### 1. Adaptive Training Modes
+* [cite_start]**Random Characters:** Generates alphanumeric strings to build raw decoding speed[cite: 1].
+* [cite_start]**Koch Method:** Progressively introduces characters (starting with K and M) once a 90% accuracy threshold is met[cite: 1].
+* [cite_start]**Echo Practice:** An interactive "Call & Response" mode where you must mimic the app's output[cite: 1].
+* [cite_start]**TX (Transmit) Mode:** Interfaces with physical paddles to verify your sending rhythm and accuracy[cite: 1].
+
+### 2. Signal Precision
+* [cite_start]**Paris Standard:** Timing logic follows the international "PARIS" standard for dots, dashes, and spacing[cite: 1].
+* [cite_start]**Customization:** User-adjustable speed (5–50 WPM) and pitch (300Hz–1200Hz)[cite: 1].
+
+
 
 ---
 
-## 📊 Data Storage
+## 🕹 User Manual
 
-Your progress is stored locally in `statistics.csv` in the application's working directory.
-* **Format:** `Date, Time, Duration, WPM, Accuracy, [Char_Total, Char_Err]...`
-* This file allows the application to reload historical accuracy and "Problem Character" charts upon restart.
+### How to Start
+1. [cite_start]**Selection:** Choose your desired mode from the side menu[cite: 1].
+2. [cite_start]**Configuration:** Use the sliders to set your target **WPM (Words Per Minute)** and **Tone Frequency**[cite: 1].
+3. **Execution:** Press the **Start** button.
+4. **Input:** When you hear a tone, type the corresponding key on your keyboard. 
+    * [cite_start]**Green Highlight:** Correct input[cite: 1].
+    * [cite_start]**Red Highlight:** Incorrect input (the correct character will be shown)[cite: 1].
+5. [cite_start]**Stop:** Press **Stop** to end the session and save your data[cite: 1].
+
+---
+
+## 📈 Checking Analytics
+The application treats your progress like an athlete's performance data.
+
+1. [cite_start]**Trend Charts:** Navigate to the **Statistics** window to see your accuracy trend over time[cite: 1].
+2. [cite_start]**Character Analysis:** A bar chart identifies your "Problem Characters"—those with the highest error rates[cite: 1].
+3. [cite_start]**Persistent Logs:** All data is saved in a `statistics.csv` file in the application folder[cite: 1]. This allows you to track progress over months or even years.
+
+
+
+---
+
+## 🔌 Hardware Integrity & Integration
+For a truly authentic experience, CW_trainer-GNR supports external hardware keyers.
+
+* [cite_start]**Connection:** Plug your Arduino/ESP32 keyer into your USB port[cite: 1].
+* [cite_start]**Integrity Check:** The app uses a **Serial Manager** to monitor the connection status in real-time[cite: 1]. If the device is disconnected, the app will alert you.
+* [cite_start]**Settings:** Ensure your hardware is set to **115200 Baud**[cite: 1].
+* **TX Mapping:** In TX mode, the app decodes the incoming Serial characters and compares them against the target string to grade your manual sending.
+
+---
+
+## 📥 How to Download
+You can find pre-built binaries in the **Download/** directory of this repository:
+
+* [cite_start]**Windows:** Download the `.exe` for installation or `.zip` for portable use[cite: 1].
+* [cite_start]**Linux:** Download the `.AppImage` for a "no-install" experience on any distribution[cite: 1].
+
+---
+
+## 💻 Detailed Platform Setup
+
+### 🪟 Windows
+1. [cite_start]**Installer Method:** Run `CW_Trainer-GNR_vX.X.X_Setup.exe`[cite: 1]. It will create desktop shortcuts and an uninstaller.
+2. [cite_start]**Portable Method:** Extract `CW_Trainer-GNR_vX.X.X_Portable.zip`[cite: 1]. Run `CW_Trainer-GNR.exe` inside. 
+
+### 🐧 Linux
+1. [cite_start]Download the `.AppImage`[cite: 1].
+2. Right-click the file -> **Properties** -> **Permissions** -> **Allow executing file as program**.
+3. [cite_start]Alternatively, run in terminal: `chmod +x CW_Trainer-GNR*.AppImage && ./CW_Trainer-GNR*.AppImage`[cite: 1].
+
+### 🍎 macOS
+*Currently available via Source Build:*
+1. Install **Qt 6** and **Qt Creator**.
+2. [cite_start]Open `CW_Trainer-GNR.pro`[cite: 1].
+3. Select the **Desktop Qt 6 (clang)** kit and press **Run**.
+
+---
+
+**Developed with ❤️ for the CW Community.**

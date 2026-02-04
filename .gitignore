@@ -55,6 +55,7 @@ qrc_*.cpp
 installer.nsi
 build_windows.sh
 build_linux.sh
+build_all.sh
 
 # Block OS/FUSE junk
 .DS_Store
